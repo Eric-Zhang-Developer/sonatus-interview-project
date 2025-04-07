@@ -1,4 +1,6 @@
+import { SearchBar } from '@/components/SearchBar';
 import { UserList } from '@/components/UserList';
+import { Button } from '@/components/ui/button';
 import { fetchUsers } from '@/lib/fetchUsers'; 
 import type { User } from '@/types/user'; 
 
@@ -24,8 +26,14 @@ export default async function HomePage() {
 
   // If fetch is successful, let us render the UserList with the fetched data
   return (
-    <main className="p-4 max-w-2xl mx-auto">
-      <h1 className="text-xl font-semibold mb-4 text-center">User List</h1>
+    <main className="p-4 max-w-2xl mx-auto flex flex-col gap-4">
+      <h1 className="text-2xl font-semibold text-center">User List</h1>
+      <SearchBar></SearchBar>
+      <div className="flex items-center justify-center gap-8">
+        <Button className="hover:cursor-pointer">Sort by Name</Button>
+        <Button className="hover:cursor-pointer">Sort by Email</Button>
+      </div>
+      
       {/* Pass the fetched users array as a prop */}
       <UserList users={users} />
     </main>
